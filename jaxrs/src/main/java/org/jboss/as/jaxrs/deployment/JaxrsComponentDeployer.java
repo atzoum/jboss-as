@@ -78,7 +78,7 @@ public class JaxrsComponentDeployer implements DeploymentUnitProcessor {
                     //only 1 view, just use the simple JNDI name
                     jndiName = "java:app/" + moduleDescription.getModuleName() + "/" + componentClass.getSimpleName();
                 } else {
-                	boolean found = false;
+                    boolean found = false;
                     String foundType = null;
                     for (final ViewDescription view : component.getViews()) {
                         for(Class subResource : jaxrsType) {
