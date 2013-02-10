@@ -74,20 +74,20 @@ public class JaxrsComponentDeployer implements DeploymentUnitProcessor {
                     boolean found = false;
                     String foundType = null;
                     for(final ViewDescription view : component.getViews()) {
-                    	for (Class subResource : jaxrsType) {
-                    		if (view.getViewClassName().equals(subResource.getName())) {
-                    			foundType = subResource.getName();
-                    			found = true;
-                    			break;
-                    		}
+                        for (Class subResource : jaxrsType) {
+                            if (view.getViewClassName().equals(subResource.getName())) {
+                                foundType = subResource.getName();
+                                found = true;
+                                break;
+                                }
+                            }
+                        if (found) {
+                            break;
+                            }
                         }
-                		if (found) {
-                			break;
-                		}
-                    }
                     if(!found) {
                         throw JaxrsMessages.MESSAGES.typeNameNotAnEjbView(Arrays.asList(jaxrsType).toString(), component.getComponentName());
-                    }
+                        }
                     jndiName = "java:app/" + moduleDescription.getModuleName() + "/" + componentClass.getSimpleName() + "!" + foundType;
                 }
 
